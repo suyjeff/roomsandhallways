@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>BASKETBALL</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="main-section">
+
+      <div id="game-controls tip-off-controls">
+        <div id="game-info">
+          <p id="game-descr">
+            He reaches for the steal and misses the ball. He reached, do you...
+          </p>
+        </div>
+      </div>
+
+      <div id="tipoff-section">
+        <img src="assets/lillard_left.png" class="tip-img left-action" id="drive-left" alt="">
+        <p class="tip-label left-label" id="tip-label-left" style="top: 600px !important;">TEACH</p>
+        <img src="assets/lillard_right.png" class="tip-img right-action" id="drive-right" alt="">
+        <p class="tip-label" id="tip-label-right">PASS IT</p>
+      </div>
+      
+      <div id="game-gifs">
+        <img class="gif-item" id="good-item" alt="game gif"/>
+        <img class="gif-item" id="bad-item" alt="game gif"/>
+      </div>
+
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+
+  <script>
+
+    function coinFlip() {
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    // Blow by
+    document.getElementsByClassName("left-action")[0].onclick = function() {
+        if (coinFlip() === 1) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "YOU REACH, I TEACH!!";
+
+            // CHOOSE LAYUP GIF
+            var gifNumber = Math.floor(Math.random() * 2) + 1;
+            document.getElementById("good-item").src = "assets/good/reach_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "buzzer.html";
+            }, 6000);
+        } else if (coinFlip() === 2) {
+            // FAILURE
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("bad-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "HE CAN'T GUARD YOU!!";
+
+            // CHOOSE BLOCKED GIF
+            var gifNumber = Math.floor(Math.random() * 4) + 1;
+            document.getElementById("bad-item").src = "assets/good/jumpshot_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "buzzer.html";
+            }, 6000);
+        }
+    };
+
+    // Shoot it
+    document.getElementsByClassName("right-action")[0].onclick = function() {
+        if (coinFlip() > 0) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "You pass out, are you scared?";
+
+            // CHOOSE THREE GIF
+            var gifNumber = Math.floor(Math.random() * 3) + 1;
+            document.getElementById("good-item").src = "assets/bad/badpass_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "buzzer.html";
+            }, 6000);
+        }
+    };
+
+  </script>
+
+</html>

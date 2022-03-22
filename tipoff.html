@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>TIPOFF</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="main-section">
+
+      <p id="play-title">TIP-OFF</p>
+
+      <div id="tipoff-section">
+        <img src="assets/left_tip.png" id="left-tip" class="tip-img" alt=" ">
+        <p class="tip-label" id="tip-label-left">SLIGHT TAP</p>
+        <img src="assets/right_tip.png" id="right-tip" class="tip-img" alt=" ">
+        <p class="tip-label" id="tip-label-right">STRONG TIP</p>
+      </div>
+      
+      <div id="game-gifs">
+        <img class="gif-item" id="good-tip" src="assets/tip_good.gif" alt="game gif"/>
+        <img class="gif-item" id="bad-tip" src="assets/tip_bad.gif" alt="game gif"/>
+      </div>
+
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+
+  <script>
+    function randomNumber() {
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    document.getElementById("left-tip").onclick = function() {
+        if (randomNumber() === 1) {
+            // GOOD TIP
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-tip").style.display = "block";
+            setTimeout(
+                function() {
+                  window.location.href = "wintip.html";
+              }, 6000);
+        } else if (randomNumber() === 2) {
+            // BAD TIP
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("bad-tip").style.display = "block";
+            setTimeout(
+                function() {
+                  window.location.href = "losetip.html";
+              }, 6000);
+        }
+    };
+
+    document.getElementById("right-tip").onclick = function() {
+        if (randomNumber() === 1) {
+            // GOOD TIP
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-tip").style.display = "block";
+            setTimeout(
+                function() {
+                  window.location.href = "wintip.html";
+              }, 6000);
+        } else if (randomNumber() === 2) {
+            // BAD TIP
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("bad-tip").style.display = "block";
+            setTimeout(
+                function() {
+                  window.location.href = "losetip.html";
+              }, 6000);
+        }
+    };
+
+  </script>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>BASKETBALL</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="main-section">
+
+      <div id="game-controls tip-off-controls">
+        <div id="game-info">
+          <p id="game-descr">
+            Your big sets the screen, will you...
+          </p>
+        </div>
+      </div>
+
+      <div id="tipoff-section">
+        <img src="assets/pnr_left.png" class="tip-img left-action" id="drive-left" alt="">
+        <p class="tip-label left-label" id="tip-label-left" style="top: 600px !important;">TAKE THE SCREEN</p>
+        <img src="assets/pnr_right.png" class="tip-img right-action" id="drive-right" alt="">
+        <p class="tip-label" id="tip-label-right">DENY THE SCREEN</p>
+      </div>
+      
+      <div id="game-gifs">
+        <img class="gif-item" id="good-item" alt="game gif"/>
+        <img class="gif-item" id="bad-item" alt="game gif"/>
+      </div>
+
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+
+  <script>
+
+    function coinFlip() {
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    // Blow by
+    document.getElementsByClassName("left-action")[0].onclick = function() {
+        if (coinFlip() === 1) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "You find the open lane and slam it home!";
+
+            // CHOOSE LAYUP GIF
+            var gifNumber = Math.floor(Math.random() * 9) + 1;
+            document.getElementById("good-item").src = "assets/bad/dunk_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "fastbreak-3.html";
+            }, 9000);
+        } else if (coinFlip() === 2) {
+            // FAILURE
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("bad-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "DENIED!!";
+
+            // CHOOSE BLOCKED GIF
+            var gifNumber = Math.floor(Math.random() * 1) + 1;
+            document.getElementById("bad-item").src = "assets/bad/blocked_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "postup-3.html";
+            }, 6000);
+        }
+    };
+
+    // Shoot it
+    document.getElementsByClassName("right-action")[0].onclick = function() {
+        if (coinFlip() === 1) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "You pop off the screen! You shoot it! LIKE BUTTER!!";
+
+            // CHOOSE THREE GIF
+            var gifNumber = Math.floor(Math.random() * 4) + 1;
+            document.getElementById("good-item").src = "assets/good/jumpshot_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "three-3.html";
+            }, 7000);
+        } else if (coinFlip() === 2) {
+            // FAILURE
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("bad-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "You pop off the screen! You shoot it! Miss...";
+
+            // CHOOSE DUNK GIF
+            var gifNumber = Math.floor(Math.random() * 3) + 1;
+            document.getElementById("bad-item").src = "assets/bad/miss2_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "drive-3.html";
+            }, 6000);
+        }
+    };
+
+  </script>
+
+</html>

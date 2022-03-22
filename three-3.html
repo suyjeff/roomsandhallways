@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>BASKETBALL</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="main-section">
+
+      <div id="game-controls tip-off-controls">
+        <div id="game-info">
+          <p id="game-descr">
+            You catch the ball on the break, wide open from three. You shoot it...
+          </p>
+        </div>
+      </div>
+
+      <div id="tipoff-section">
+        <img src="assets/open_left.png" class="tip-img left-action" id="drive-left" alt="">
+        <p class="tip-label left-label" id="tip-label-left" style="top: 500px !important;">THAT'S MONEY</p>
+        <img src="assets/open_right.png" class="tip-img right-action" id="drive-right" alt="">
+        <p class="tip-label" id="tip-label-right">PURE CASH</p>
+      </div>
+      
+      <div id="game-gifs">
+        <img class="gif-item" id="good-item" alt="game gif"/>
+        <img class="gif-item" id="bad-item" alt="game gif"/>
+      </div>
+
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+
+  <script>
+
+    function coinFlip() {
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    // Blow by
+    document.getElementsByClassName("left-action")[0].onclick = function() {
+        if (coinFlip() > 0) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "Wide open...BAAAANNNNGGG!";
+
+            // CHOOSE LAYUP GIF
+            var gifNumber = Math.floor(Math.random() * 9) + 1;
+            document.getElementById("good-item").src = "assets/good/three_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "threat-4.html";
+            }, 6000);
+        }
+    };
+
+    // Shoot it
+    document.getElementsByClassName("right-action")[0].onclick = function() {
+        if (coinFlip() > 0) {
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "No good.";
+
+            // CHOOSE THREE GIF
+            var gifNumber = Math.floor(Math.random() * 1) + 1;
+            document.getElementById("good-item").src = "assets/bad/miss3_" + gifNumber + ".gif";
+            setTimeout(
+                function() {
+                    window.location.href = "shake-4.html";
+            }, 6000);
+        }
+    };
+
+  </script>
+
+</html>

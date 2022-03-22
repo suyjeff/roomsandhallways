@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>BASKETBALL</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="main-section">
+
+        <div class="stadium" id="game-gifs-2" style="display: block !important;">
+            <img class="gif-item" id="stadium" alt="playoff stadium" src="assets/stadium.gif"/>
+        </div>
+
+        <div id="game-controls tip-off-controls">
+            <div id="game-info">
+                <p id="game-descr">
+                It's a tied game. Five seconds left on the clock. You have the ball. The crowd is standing up.
+                What will it be?
+                </p>
+            </div>
+        </div>
+
+        <div id="tipoff-section">
+            <img src="assets/dametime_left.png" class="tip-img left-action" id="drive-left" alt="">
+            <p class="tip-label left-label" id="tip-label-left" style="top: 200px !important;">BALL GAME</p>
+            <img src="assets/dametime_right.png" class="tip-img right-action" id="drive-right" alt="">
+            <p class="tip-label" id="tip-label-right">GOODNIGHT</p>
+        </div>
+      
+        <div id="game-gifs">
+            <img class="gif-item" id="good-item" alt="game gif"/>
+        </div>
+
+        <input id="audio-input" type="button" value="PLAY" onclick="play()">
+        <audio id="audio" src="assets/dametime.mp3"></audio>
+
+
+    </div>
+  </body>
+
+  <script src="main.js"></script>
+
+  <script>
+
+    function coinFlip() {
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+    }
+
+
+    document.getElementsByClassName("stadium")[0].onclick = function() {
+        this.style.display = "none";
+    };
+
+
+    document.getElementsByClassName("left-action")[0].onclick = function() {
+        if (coinFlip() > 0) {
+
+            play();
+
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "Long range three...IT'S GOOD!";
+
+            // CHOOSE LAYUP GIF
+            var gifNumber = Math.floor(Math.random() * 9) + 1;
+            document.getElementById("good-item").src = "assets/dametime1.gif";
+
+            
+        }
+    };
+
+    document.getElementsByClassName("right-action")[0].onclick = function() {
+        if (coinFlip() > 0) {
+
+            play();
+
+            // SUCCESS
+            document.getElementById("game-gifs").style.display = "block";
+            document.getElementById("good-item").style.display = "block";
+
+            // CHANGE DESCR TEXT
+            document.getElementById("game-descr").innerHTML = 
+            "Long range three...IT'S GOOD!";
+
+            // CHOOSE THREE GIF
+            var gifNumber = Math.floor(Math.random() * 1) + 1;
+            document.getElementById("good-item").src = "assets/dametime1.gif";
+
+            
+        }
+    };
+
+  </script>
+
+</html>
